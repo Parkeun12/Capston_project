@@ -16,15 +16,19 @@ class ScheduleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      child:Padding(
+
+        padding: EdgeInsets.all(15.0,),
+      child:Container(
       decoration: BoxDecoration(
         border: Border.all(
-          width: 1.0,
-          color: PRIMARY_COLOR,
+          width: 2.5,
+          color: BLUE_COLOR,
         ),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(22.0),
         child: IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -40,6 +44,8 @@ class ScheduleCard extends StatelessWidget {
               SizedBox(width: 16.0),
             ],
           ),
+          ),
+      ),
         ),
       ),
     );
@@ -60,8 +66,8 @@ class _Time extends StatelessWidget{
   Widget build(BuildContext context){
     final textStyle = TextStyle(
       fontWeight: FontWeight.w600,
-      color: PRIMARY_COLOR,
-      fontSize: 16.0,
+      color: BLUE_COLOR,
+      fontSize: 23.0,
     );
 
     return Column(
@@ -71,12 +77,6 @@ class _Time extends StatelessWidget{
           '${startTime.toString().padLeft(2, '0')}:00',
           style: textStyle,
         ),
-        Text(
-        '${startTime.toString().padLeft(2, '0')}:00',
-          style: textStyle.copyWith(
-            fontSize: 10.0,
-          )
-        )
       ],
     );
   }
