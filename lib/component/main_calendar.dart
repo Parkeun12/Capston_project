@@ -3,9 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class MainCalendar extends StatelessWidget{
+
+  final OnDaySelected onDaySelected;
+  final DateTime selectedDate;
+
+  MainCalendar({
+    required this.onDaySelected,
+    required this.selectedDate,
+  });
+
   @override
   Widget build(BuildContext context){
     return TableCalendar(
+      onDaySelected: onDaySelected,
+      selectedDayPredicate: (date) =>
+      date.year == selectedDate.year &&
+          date.month == selectedDate.month &&
+          date.day == selectedDate.day,
+
       firstDay: DateTime(1800, 1, 1),
       lastDay: DateTime(3000, 1, 1),
       focusedDay: DateTime.now(),
@@ -26,10 +41,10 @@ class MainCalendar extends StatelessWidget{
           borderRadius: BorderRadius.circular(6.0),
         ),
         selectedDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6.0),
+          borderRadius: BorderRadius.circular(20.0),
           border: Border.all(
-            color: PRIMARY_COLOR,
-            width: 1.0,
+            color: BLUE_COLOR,
+            width: 2.0,
           ),
         ),
         //글꼴
@@ -43,7 +58,7 @@ class MainCalendar extends StatelessWidget{
         ),
         selectedTextStyle: TextStyle(
           fontWeight: FontWeight.w600,
-          color: PRIMARY_COLOR,
+          color: BLUE_COLOR,
         ),
       ),
     );
