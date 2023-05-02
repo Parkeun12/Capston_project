@@ -92,9 +92,15 @@ class _Content extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 16.0,
+    );
+
     return Expanded(
         child: Text(
           content,
+          style: textStyle,
         ),
     );
   }
