@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:capston_project/component/main_calendar.dart';
 import 'package:capston_project/component/schedule_card.dart';
+import 'package:capston_project/component/today.dart';
+import 'package:capston_project/component/schedule_button.dart';
+import 'package:capston_project/const/colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,6 +22,20 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: BLUE_COLOR,
+
+        onPressed: (){
+          showModalBottomSheet(
+              context: context,
+              isDismissible: true,
+              builder: (_) => ScheduleButtonSheet(),
+          );
+        },
+        child: Icon(
+          Icons.add,
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -27,6 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
               onDaySelected: onDaySelected,
             ),
+            SizedBox(height: 8.0),
+            Today(
+                selectedDate: selectedDate,
+                count: 0,
+            ),
+            SizedBox(height: 8.0),
             ScheduleCard(
                 startTime: 12,
                 endTime: 14,
