@@ -6,7 +6,10 @@ import 'package:capston_project/component/schedule_button.dart';
 import 'package:capston_project/const/colors.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final int number;
+  const HomeScreen({
+    required this.number,
+    Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

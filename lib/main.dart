@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:capston_project/screen/home_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:capston_project/screen/navigation_screen.dart';
 
 void main() async{
 
@@ -10,7 +11,7 @@ void main() async{
 
     runApp(
     MaterialApp(
-      home: HomeScreen(),
+      home: RootScreen(),
     )
   );
 }
