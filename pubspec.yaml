@@ -35,6 +35,9 @@ dev_dependencies:
   build_runner: 2.2.0
   #ㅡㅡ
 
+  #웹뷰
+  webview_flutter: 3.0.4
+  #ㅡㅡ
   flutter_lints: ^2.0.0
 
 flutter:

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:capston_project/screen/home_screen.dart';
-import 'package:capston_project/screen/settings_screen.dart';
+import 'package:capston_project/screen/edit_screen.dart';
 import 'package:capston_project/screen/calendar_screen.dart';
 
 class RootScreen extends StatefulWidget {
@@ -42,7 +42,7 @@ class _RootScreenState extends State with TickerProviderStateMixin {
 
   List<Widget> rendChildren(){
     return [
-      SettingsScreen(number: number),
+      MainScreen(number: number),
       HomeScreen(number: number),
       Edit(number: number),
     ];
