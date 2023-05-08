@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:capston_project/screen/home_screen.dart';
-import 'package:capston_project/settings_screen.dart';
+import 'package:capston_project/screen/settings_screen.dart';
+import 'package:capston_project/screen/calendar_screen.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({Key? key}) : super(key: key);
@@ -10,14 +11,13 @@ class RootScreen extends StatefulWidget {
 
 class _RootScreenState extends State with TickerProviderStateMixin {
   TabController? controller;
-  double threshold = 2.7;
-  int number = 1;
+  int number = 2;
 
 
   @override
   void initState() {
     super.initState();
-    controller = TabController(length: 2, vsync: this); // 컨트롤러 초기화
+    controller = TabController(length: 3, vsync: this); // 컨트롤러 초기화
 //컨트롤러 속성이 변경될 때 마다 실행할 함수 등록
     controller!.addListener(tabListener);
 
@@ -27,12 +27,6 @@ class _RootScreenState extends State with TickerProviderStateMixin {
     setState(() {
 
     });
-  }
-
-  @override
-  void dispose() {
-    controller!.removeListener(tabListener); //리스너에 등록한 함수 등록 취소들기 감지 중지
-    super.dispose();
   }
 
   @override
@@ -48,18 +42,10 @@ class _RootScreenState extends State with TickerProviderStateMixin {
 
   List<Widget> rendChildren(){
     return [
+      SettingsScreen(number: number),
       HomeScreen(number: number),
-      SettingsScreen(
-          threshold: threshold, onThresholdChange: onThresholdChange
-      ),
+      Edit(number: number),
     ];
-  }
-
-  //슬라이더 값 변경 시 실행되는 함수
-  void onThresholdChange(double val) {
-    setState(() {
-      threshold = val;
-    });
   }
 
   BottomNavigationBar renderBootomNavigation() {
@@ -74,15 +60,21 @@ class _RootScreenState extends State with TickerProviderStateMixin {
       items: [
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.edgesensor_high_outlined,
+            Icons.home,
           ),
-          label: '주사위',
+          label: '홈',
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.settings,
+            Icons.calendar_month,
           ),
-          label: '설정',
+          label: '일정',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.edit,
+          ),
+          label: '게시글 작성',
         ),
       ],
     );
