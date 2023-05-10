@@ -50,9 +50,8 @@ class Edit extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: onSavePressed,
                   style: ElevatedButton.styleFrom(
-                    primary: BLUE_COLOR,
                   ),
-                  child: Text('등록하기'),
+                  child: Text('등록하기.'),
                 ),
               )
             ],
