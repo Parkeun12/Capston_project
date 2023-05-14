@@ -12,21 +12,83 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: BLUE_COLOR,
-
-        title: Text('C언어 스터디'),
-
-        centerTitle: true,
-        actions: [
-          IconButton(
-              icon: Icon(Icons.home),
-              onPressed: (){
-                print('object');
-              }
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80.0), // 높이를 80으로 조정
+        child: AppBar(
+          backgroundColor: BLUE_COLOR,
+          title: Text(
+            'C언어 스터디',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ],
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                print('object');
+              },
+            ),
+          ],
+
+        ),
+      ),
+      body: SafeArea(
+        child: ListView.builder(
+          itemCount: 5, // 예시를 위해 5개의 게시글을 생성하도록 설정
+          itemBuilder: (context, index) {
+            return Container(
+              padding: EdgeInsets.all(8.0),
+              margin: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0.0),
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: Colors.grey.withOpacity(0.5),
+                    width: 1.0,
+                  ),
+                ),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Image.network(
+                      'https://via.placeholder.com/150',
+                      height: 100.0,
+                      width: 100.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(width: 8.0),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '제목',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          '본문',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
       drawer: Drawer(
         child: ListView(
