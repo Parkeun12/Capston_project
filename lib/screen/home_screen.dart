@@ -20,7 +20,7 @@ class MainScreen extends StatelessWidget {
             'C언어 스터디',
             style: TextStyle(
               fontSize: 20.0,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
             ),
           ),
           centerTitle: true,
