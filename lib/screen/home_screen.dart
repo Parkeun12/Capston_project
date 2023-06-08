@@ -1,19 +1,20 @@
 import 'package:capston_project/const/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:capston_project/screen/income_screen.dart';
 
 class MainScreen extends StatelessWidget {
   final int number;
 
   const MainScreen({
     required this.number,
-    Key? key}) : super(key: key);
+    Key? key,
+  }) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.0), // 높이를 80으로 조정
+        preferredSize: Size.fromHeight(80.0),
         child: AppBar(
           backgroundColor: BLUE_COLOR,
           title: Text(
@@ -32,12 +33,11 @@ class MainScreen extends StatelessWidget {
               },
             ),
           ],
-
         ),
       ),
       body: SafeArea(
         child: ListView.builder(
-          itemCount: 5, // 예시를 위해 5개의 게시글을 생성하도록 설정
+          itemCount: 5,
           itemBuilder: (context, index) {
             return Container(
               padding: EdgeInsets.all(8.0),
@@ -53,16 +53,6 @@ class MainScreen extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12.0),
-                    child: Image.network(
-                      'https://via.placeholder.com/150',
-                      height: 100.0,
-                      width: 100.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: 8.0),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,36 +85,103 @@ class MainScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar( //프로필사진
-                //backgroundImage로 이미지 삽입가능
+              currentAccountPicture: CircleAvatar(
                 backgroundColor: WHITE_COLOR,
               ),
               accountName: Text('이름'),
               accountEmail: Text('email@naver.com'),
             ),
             ListTile(
-              title: Text(
-                  '멤버',
-                style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w500,
-                ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '멤버',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  ButtonTheme(
+                    padding: EdgeInsets.zero,
+                    minWidth: 0,
+                    child: TextButton(
+                      onPressed: (){
+                        showModalBottomSheet(
+                          context: context,
+                          isDismissible: true,
+                          builder: (_) => IncomeScreen(),
+
+                          isScrollControlled: true,
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            '들어온 신청',
+                            style: TextStyle(
+                              color: DARK_GREY_COLOR,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             ListTile(
               leading: CircleAvatar(
                 backgroundColor: BLUE_COLOR,
               ),
-              title: Text('이름'),
-              //trailing: Text('내보내기'), 관리자설정에서 내보낼 수 있게
+              title: Align(
+                alignment: Alignment.centerRight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('이름'),
+                    TextButton(
+                      onPressed: () {
+                        // 버튼이 클릭되었을 때
+                        print('Button clicked');
+                      },
+                      child: Text(
+                        '내보내기',
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             ListTile(
               leading: CircleAvatar(
                 backgroundColor: DARK_GREY_COLOR,
               ),
-              title: Text('이름2'),
-              //trailing: Text('내보내기'), 관리자설정에서 내보낼 수 있게
-            )
+              title: Align(
+                alignment: Alignment.centerRight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('이름2'),
+                    TextButton(
+                      onPressed: () {
+                        // 버튼이 클릭되었을 때
+                        print('Button clicked');
+                      },
+                      child: Text(
+                        '내보내기',
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

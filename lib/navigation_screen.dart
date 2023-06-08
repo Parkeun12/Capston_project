@@ -18,7 +18,7 @@ class _RootScreenState extends State with TickerProviderStateMixin {
   void initState() {
     super.initState();
     controller = TabController(length: 3, vsync: this); // 컨트롤러 초기화
-//컨트롤러 속성이 변경될 때 마다 실행할 함수 등록
+//컨트롤러 속성이 변경될 때 마다 실행할 함수
     controller!.addListener(tabListener);
 
   }
@@ -33,7 +33,7 @@ class _RootScreenState extends State with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TabBarView(
-        controller: controller, // 컨트롤러 등록하기
+        controller: controller, // 컨트롤러 등록
         children: rendChildren(),
       ),
       bottomNavigationBar: renderBootomNavigation(),
@@ -50,7 +50,6 @@ class _RootScreenState extends State with TickerProviderStateMixin {
 
   BottomNavigationBar renderBootomNavigation() {
     return BottomNavigationBar(
-      //현재 화면에 렌더링되는 탭의 인덱스
       currentIndex: controller!.index,
       onTap: (int index){ //탭이 선택될 때마다 실행되는 함수
         setState(() {
